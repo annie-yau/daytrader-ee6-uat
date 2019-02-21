@@ -5,7 +5,7 @@
     "name": "wlp-daytrader-jenkins",
     "namespace": "demo-env-uat",
     "labels": {
-      "app": "wlp-daytrader-jenkins"
+      "app": "wlp-daytrader-jenkins-uat"
     },
     "annotations": {
       "deployment.kubernetes.io/revision": "1",
@@ -16,20 +16,20 @@
     "replicas": 1,
     "selector": {
       "matchLabels": {
-        "app": "wlp-daytrader-jenkins"
+        "app": "wlp-daytrader-jenkins-uat"
       }
     },
     "template": {
       "metadata": {
         "labels": {
-          "app": "wlp-daytrader-jenkins"
+          "app": "wlp-daytrader-jenkins-uat"
         }
       },
       "spec": {
         "containers": [
           {
             "name": "wlp-daytrader-jenkins",
-            "image": "mycluster.icp:8500/demo-env-uat/daytrader-ee6",
+            "image": "mycluster.icp:8500/demo-env-uat/daytrader-ee6:latest",
              "ports": [
               {
                 "containerPort": 9080,
@@ -52,11 +52,6 @@
         "terminationGracePeriodSeconds": 30,
         "dnsPolicy": "ClusterFirst",
         "securityContext": {},
-        "imagePullSecrets": [
-          {
-            "name": "admin.registrykey"
-          }
-          ],
         "schedulerName": "default-scheduler"
       }
     },
